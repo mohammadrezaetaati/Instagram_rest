@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  django_web:
+    build: .
+    command: >
+      ash -c "python manage.py migrate && gunicorn instagram.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - .:/app/
+    ports:
+      - 8002:8002
+
+
